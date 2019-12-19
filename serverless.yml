@@ -1,8 +1,8 @@
+
 service:
   name: pdf
 
 plugins:
-  - serverless-offline
   - serverless-apigw-binary
 
 provider:
@@ -23,7 +23,7 @@ functions:
     handler: pdf.pdf
     events:
       - http:
-          path: pdf/{yearMonth}
+          path: pdf/practicepkg
           method: get
           cors: true
           parameters:

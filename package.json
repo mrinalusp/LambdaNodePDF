@@ -2,9 +2,9 @@
   "name": "pdf",
   "version": "0.1.0",
   "description": "AWS Lambda PDF generation",
-  "author": "Aki Rautio <aki.rautio@gmail.com>",
+  "author": "",
   "homepage": "",
-  "license": "ISC",
+  "license": "",
   "main": "src/pdf.js",
   "directories": {
     "src": "src"

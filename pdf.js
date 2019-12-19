@@ -19,17 +19,11 @@ module.exports.pdf = async (event, context) => {
   }
 
   // Fetch data with knex
-  const result = await knex
-    .select()
-    .from('sales')
-    .where({
-      year: filter.year,
-      month: selDate.getMonth() + 1
-    })
-
-  const template = pug.compileFile('./src/template.pug')
-  const html = template({ ...filter, result })
-
+  
+ // TODO - Template File
+ // const template = pug.compileFile('./src/template.pug')
+  const html = '<!DOCTYPEhtml><html><head><style>table{font-family:arial,sans-serif;border-collapse:collapse;width:100%;}td,th{border:1pxsolid#dddddd;text-align:left;padding:8px;}tr:nth-child(even){background-color:#dddddd;}</style></head><body><h2>PracticePackageReport</h2><table><tr><th>Groups</th><th>CCD</th><th>#Episodes</th></tr><tr><td>Harvard</td><td>IN</td><td>23</td></tr><tr><td>Boston</td><td>OUT</td><td>23</td></tr><tr><td>Yale</td><td>IN</td><td>23</td></tr><tr><td>Harvard</td><td>IN</td><td>34</td></tr><tr><td>UConn</td><td>IN</td><td>13</td></tr><tr><td>StFrancis</td><td>OUT</td><td>90</td></tr></table></body></html>'
+    
   let browser = null
   try {
     browser = await chromium.puppeteer.launch({
@@ -51,7 +45,7 @@ module.exports.pdf = async (event, context) => {
     const response = {
       headers: {
         'Content-type': 'application/pdf',
-        'content-disposition': 'attachment; filename=test.pdf'
+        'content-disposition': 'attachment; filename=package.pdf'
       },
       statusCode: 200,
       body: pdf.toString('base64'),
